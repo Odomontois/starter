@@ -68,13 +68,6 @@ return {
               desc = "Metals commands",
             },
             {
-              "<leader>mc",
-              function()
-                require("metals").compile_cascade()
-              end,
-              desc = "Metals compile cascade",
-            },
-            {
               "<leader>mh",
               function()
                 require("metals").hover_worksheet()

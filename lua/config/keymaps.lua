@@ -6,7 +6,9 @@
 local map = LazyVim.safe_keymap_set
 local wk = require("which-key")
 
-wk.add({ "<leader>m", group = "Metals", icon = { icon = "", color = "red" } })
+local metals_icon = { icon = "", color = "red" }
+
+wk.add({ "<leader>m", group = "Metals", icon = metals_icon })
 wk.add({ "<;leader>j", group = "Jujutsu" })
 
 local function toggleSetting(modname, setting)
@@ -19,6 +21,8 @@ map("n", "<leader>ma", toggleSetting("metals", "showImplicitArguments"), { desc 
 
 map("n", "<leader>mi", toggleSetting("metals", "showImplicitConversionsAndClasses"), { desc = "Show Implicit Conversions" })
 
-map("n", "<leader>mf", "<cmd>MetalsNewScalaFile<cr>", { desc = "Create scala file" })
+map("n", "<leader>mn", "<cmd>MetalsNewScalaFile<cr>", { desc = "New Scala File" })
 
-map("n", "<leader>ml", toggleSetting("metals", "allowCaptureChecking"), { desc = "Allow Capture Checking" })
+map("n", "<leader>mb", "<cmd>MetalsImportBuild<cr>", { desc = "Import Build" })
+
+map("n", "<leader>mc", "<cmd>split | terminal sbtn compile<cr>", { desc = "sbtn Compile" })

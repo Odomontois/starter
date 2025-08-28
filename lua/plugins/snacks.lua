@@ -11,4 +11,17 @@ return {
       desc = "Recent (cwd)",
     },
   },
+  opts = function(_, opts)
+    return vim.tbl_deep_extend("force", opts, {
+      picker = {
+        sources = {
+          explorer = {
+            include = {
+              ".metals",
+            },
+          },
+        },
+      },
+    })
+  end,
 }
