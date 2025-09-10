@@ -10,6 +10,7 @@ return {
       metals_config.settings = {
         serverVersion = "1.6.2",
       }
+      metals_config.find_root_dir_max_project_nesting = 3
       return metals_config
     end,
     config = function(self, metals_config)
