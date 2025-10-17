@@ -10,9 +10,16 @@ local function set_tmux_window_name()
   -- Schakel automatisch hernoemen voor dit venster uit
   vim.fn.system("tmux set-window-option -q automatic-rename off")
 
+  local window_title
   -- Haal de mapnaam op en stel de vensternaam in
-  local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-  vim.fn.system("tmux rename-window 'nvim " .. dir_name .. "'")
+  if vim.fn.argc() == 1 then
+    -- Gebruik de bestandsnaam (alleen de naam, zonder het pad)
+    window_title = vim.fn.fnamemodify(vim.fn.argv()[1], ":t")
+  else
+    -- Gebruik anders de naam van de map
+    window_title = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  end
+  vim.fn.system("tmux rename-window 'nvim {" .. window_title .. "}'")
 end
 
 -- Functie om de naam van het tmux-venster te herstellen
