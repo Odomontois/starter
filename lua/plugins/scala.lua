@@ -8,13 +8,15 @@ return {
     opts = function()
       local metals_config = require("metals").bare_config()
       metals_config.settings = {
-        serverVersion = "1.6.2",
+        serverVersion = "3.6.2+126-15679fab-SNAPSHOT",
+        showImplicitArguments = false,
       }
       metals_config.find_root_dir_max_project_nesting = 3
       return metals_config
     end,
     config = function(self, metals_config)
       local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+      metals_config.showImplicitArguments = false
       vim.api.nvim_create_autocmd("FileType", {
         pattern = self.ft,
         callback = function()
@@ -103,5 +105,8 @@ return {
         end,
       },
     },
+  },
+  {
+    "stevanmilic/neotest-scala",
   },
 }

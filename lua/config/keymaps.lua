@@ -26,3 +26,7 @@ map("n", "<leader>mn", "<cmd>MetalsNewScalaFile<cr>", { desc = "New Scala File" 
 map("n", "<leader>mb", "<cmd>MetalsImportBuild<cr>", { desc = "Import Build" })
 
 map("n", "<leader>mc", "<cmd>split | terminal sbtn compile<cr>", { desc = "sbtn Compile" })
+
+-- map("v", "K", function()
+--   return vim.lsp.buf.hover()
+-- end, { desc = "Hover" })
